@@ -1,0 +1,17 @@
+<h1>Scores</h1>
+<% if @scores.empty? %>
+  <h4>No scores yet, Get out there!</h4>
+<% else %>
+  <ol>
+    <% @scores.each do |score| %>
+      <div style="border-bottom: 2px solid gray; padding-bottom: 10px">
+        <%= render score %>
+        <div>
+          <%= link_to "Edit this score", edit_score_path(score) %>
+          <%= button_to "Destroy this score", score, method: :delete %>
+        </div>
+      </div>
+    <% end %>
+  </ol>
+<% end %>
+<%= link_to 'New Score', new_score_path %>

@@ -1,0 +1,9 @@
+<%= form_with(model: score) do |form| %>
+  <%= form.text_field :course, placeholder: 'Course' %>
+  <%= form.date_field :date %>
+  <%= form.text_field :tees, placeholder: 'Tees' %>
+  <%= form.number_field :slope, placeholder: 'Slope' %>
+  <%= form.number_field :rating, placeholder: 'Rating' %>
+  <%= form.number_field :score, placeholder: 'Score' %>
+  <%= form.submit %>
+<% end %>
