@@ -1,8 +1,9 @@
   class ScoresController < ApplicationController
     before_action :set_score, only: [:show, :edit, :update, :destroy]
+    before_action :authenticate_user!
 
     def index
-      @scores = Score.all
+      @scores = current_user.scores
     end
 
     def new
@@ -30,7 +31,7 @@
     def update
       respond_to do |format|
         if @score.update(score_params)
-          format.html { redirect_to scores_url(@score), notice: "Score was successfully edited"}
+          format.html { redirect_to scores_path, notice: "Score was successfully edited"}
         else
           format.html { render :edit, status: :unprocessable_entity }
         end
@@ -38,9 +39,9 @@
     end
     
     def destroy
-      @score.destroy
+      @score.destroy!
       respond_to do |format|
-        format.html {redirect_to @scores/index, notice: "Score was Deleted Successfully."}
+        format.html {redirect_to scores_path, notice: "Score was Deleted Successfully."}
       end
 
     end
@@ -51,6 +52,6 @@
       @score = Score.find(params[:id])
     end
     def score_params
-      params.require(:score).permit(:course, :date, :tees, :slope, :rating, :score)
+      params.require(:score).permit(:course, :date, :tees, :slope, :rating, :score, :user_id)
     end
   end

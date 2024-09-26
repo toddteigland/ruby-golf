@@ -2,8 +2,9 @@
   <%= form.text_field :course, placeholder: 'Course' %>
   <%= form.date_field :date %>
   <%= form.text_field :tees, placeholder: 'Tees' %>
-  <%= form.number_field :slope, placeholder: 'Slope' %>
-  <%= form.number_field :rating, placeholder: 'Rating' %>
+  <%= form.number_field :slope, placeholder: 'Slope ~113' %>
+  <%= form.number_field :rating, step: 0.1, placeholder: 'Rating' %>
   <%= form.number_field :score, placeholder: 'Score' %>
+  <%= form.number_field :user_id, id: :score_user_id, value: current_user.id, type: :hidden %>
   <%= form.submit %>
 <% end %>

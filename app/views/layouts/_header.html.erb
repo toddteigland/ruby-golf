@@ -1,0 +1,9 @@
+<% if user_signed_in? %>
+  <h3><%= current_user.email %></h3>
+  <% if (current_user.scores.count < 3) %>
+    <p>Please enter 3 rounds for a handicap</p>
+  <% else %>
+    <p>Handicap: <%= current_user.current_handicap %></p>
+  <% end %>
+  <%= button_to "Sign out", destroy_user_session_path, method: :delete %>
+<% end %>
